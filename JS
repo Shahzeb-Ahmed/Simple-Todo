@@ -1,0 +1,22 @@
+$('ul').on('click', 'li', function(){
+    $(this).toggleClass('crossed');
+});
+
+$('ul').on('click', 'span', function(event){
+    $(this).parent().toggle('slide',function(){
+        $(this).remove()
+    });
+    event.stopPropagation();
+})
+
+$('input').keypress(function(event){
+    if(event.which === 13) {
+        var val = $(this).val();
+        $('ul').append('<li><span><i class="fas fa-trash"></i></span> ' + val + '</li>');
+        $('input').val('');
+    }
+})
+
+$('h1').on('click', '.fa-caret-down', function(){
+    $('input').fadeToggle();
+})
